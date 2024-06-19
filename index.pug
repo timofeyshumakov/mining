@@ -1,0 +1,29 @@
+include mixins.pug
+doctype html
+html(lang="en")
+  head
+    meta(charset='UTF-8')
+    meta(name='format-detection' content="telephone=yes")
+    meta(name="robots" content="index, follow")
+    meta(name="keywords" content="travel, explore, vacation, explore, adventure, tourism, itinerary, airlines, hotels, backpacking, culture, sightseeing, holiday, remote, wanderlust, passport, tropical, accommodation, transportation, landmarks")
+    meta(name="description" content="Explore the world with our travel website! Discover breathtaking explores, find the best deals on flights and hotels, and plan your dream vacation. From relaxing beach getaways to thrilling adventures, let us help you create unforgettable memories. Book your next trip today!")
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='icon' type='image/x-icon' href='assets/img/common/logo.svg')
+    title mining
+    link(rel='stylesheet' href='assets/css/style.css')
+    link(rel='stylesheet' href='assets/css/reset.css')
+  body
+    .wrapper
+      include header.pug
+      main.main
+        -sectionNumber++
+        -sectionName= 'main-block'
+        -bemBlock = `${sectionName}__`
+        section(class='main__' + `${sectionName}`)(class=`${sectionName}`)
+          div(class=`${bemBlock}container`).container
+            -newBlock = 'left-block'
+            div(class=`${bemBlock}` + newBlock + ` ${newBlock}`)
+      -sectionNumber++
+      -sectionName= 'footer'
+      -bemBlock = `${sectionName}__`
+      include footer.pug

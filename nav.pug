@@ -1,0 +1,20 @@
+include mixins.pug
+-menuItems = ['Home', 'Menu', 'Events','About us']
+  -newBlock = 'mining-nav'
+  -var links= ['Miners', 'Blocks', 'Pool statistics', 'Network statistics', 'Getting started'];
+  -var src= ['miners', 'blocks', 'stats', 'network', 'start', 'start', 'start'];
+  nav(class=`${bemBlock}` + newBlock + ` ${newBlock}`)
+    -bemBlock = `${newBlock}__`
+    -newBlock = 'pool-logo'
+    a(class=`${bemBlock}` + newBlock + ` ${newBlock}`)
+      +img(`${bemBlock}` + 'img', `pools/${pool}`, 'svg', 'blog img',  0)
+      span(class=`${bemBlock}` + 'txt')=poolTitle
+    -newBlock = 'mining-nav'
+    -bemBlock = `${newBlock}__`
+    ul(class=`${bemBlock}` + 'links')
+      -links.forEach(function callback(val, index) {
+        li(class=`${bemBlock}` + 'item')
+          a(class=`${bemBlock}` + 'link' href='#')
+            +img(`${bemBlock}` + 'link-img', `header/nav/${src[index]}`, 'svg', 'blog img',  0)
+            span(class=`${bemBlock}` + 'link-txt')=val
+      -});

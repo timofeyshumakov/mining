@@ -1,0 +1,26 @@
+include mixins.pug
+-sectionName= 'header'
+-bemBlock = `${sectionName}__`
+header(class=`${sectionName}`)
+  -newBlock = 'container'
+  div(class=`${bemBlock}` + newBlock + ` ${newBlock}`)
+    div(class=`${bemBlock}` + 'main')
+      +logo(bemBlock)
+      -newBlock = 'menu'
+      nav(class=`${bemBlock}` + newBlock + ` ${newBlock}`)
+        -bemBlock = `${newBlock}__`
+        -menuLinks = ['Pools', 'Blog', 'FAQ']
+        ul(class=`${bemBlock}` + 'list')
+          each link in menuLinks
+            li(class=`${bemBlock}` + 'item')
+              a(class=`${bemBlock}` + 'link')(href= link + '.html')= link
+        div(class=`${bemBlock}` + 'wallet')
+          div(class=`${bemBlock}` + 'wallet-txt') Your wallet address
+          div(class=`${bemBlock}` + 'wallet-button')
+      -bemBlock = `${sectionName}__`
+      div(class=`${bemBlock}` + 'buttons')
+        +img(`${bemBlock}` + 'button', 'header/sun', 'svg')
+        +img(`${bemBlock}` + 'button', 'header/website', 'svg')
+      button(class=`${bemBlock}` + 'signup') Sign up
+    if pool !== ''
+      include nav.pug

@@ -1,0 +1,37 @@
+include mixins.pug
+-sectionName= 'footer'
+-bemBlock = `${sectionName}__`
+footer(class=`${sectionName}`)
+  -newBlock = 'container'
+  div(class=`${bemBlock}` + newBlock + ` ${newBlock}`)
+    +logo(bemBlock)
+    div(class=`${bemBlock}` + 'main')
+      -newBlock = 'menu'
+      nav(class=`${bemBlock}` + newBlock + ` ${newBlock}`)
+        -bemBlock = `${newBlock}__`
+        span(class=`${bemBlock}` + 'title') Pools
+        span(class=`${bemBlock}` + 'title') About
+        -menuLinks = [['Hathor pool', 'Kaspa pool', 'Kaspa pool', 'Nexa pool', 'Nexa pool', 'Warthog pool'], ['API', 'Blog', 'About us', 'FAQ'] ];
+          each link in menuLinks
+              ul(class=`${bemBlock}` + 'list')
+                each idx in link
+                  li(class=`${bemBlock}` + 'item')
+                      a(class=`${bemBlock}` + 'link' href='#')=idx
+      -bemBlock = `${sectionName}__`
+        -newBlock = 'form'
+        form(class=`${bemBlock}` + newBlock + ` ${newBlock}` action="#" method="post")
+          -bemBlock = `${newBlock}__`
+          label(class=`${bemBlock}` + 'txt' for="email") subscribe for the newsletter
+          div(class=`${bemBlock}` + 'main')
+            input(class=`${bemBlock}` + 'input' type="email" id="email" name="email" placeholder="Your e-mail here" required)
+            button(class=`${bemBlock}` + 'button' type="submit")
+              +img(`${bemBlock}` + 'button-img','icons/arrow','svg')
+    -bemBlock = `${sectionName}__`
+    -newBlock = 'copyright'
+    div(class=`${bemBlock}` + newBlock + ` ${newBlock}`)
+      -bemBlock = `${newBlock}__`
+      div(class=`${bemBlock}` + 'txt') Сopyright © 2024 Acc Pool. All right reserved.
+      +img(`${bemBlock}` + 'social', 'socials/telegram', 'svg')
+      div(class=`${bemBlock}` + 'to-top')
+        div(class=`${bemBlock}` + 'to-top-txt') Back to top
+        +img(`${bemBlock}` + 'to-top-img','icons/arrow', 'svg')
